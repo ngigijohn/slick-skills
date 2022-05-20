@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="en">
+  {%load static%}
+
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      rel="shortcut icon"
+      type="image/png"
+      href="{% static 'favicon.ico' %}"
+    />
+    <title>Slick Skills</title>
+    <style>
+      body {
+        background-color: rgb(245, 245, 245);
+        font-family: Quicksand, Helvetica, sans-serif;
+        padding-top: 50px;
+      }
+
+      h1,
+      h2,
+      h3,
+      h4,
+      h5,
+      h6 {
+        font-family: "Raleway", sans-serif;
+      }
+
+      a,
+      p {
+        color: rgb(17, 17, 17);
+      }
+
+      .container {
+        max-width: 550px;
+        min-width: 200px;
+        margin: auto;
+        background-color: rgb(255, 255, 255);
+        box-shadow: 0 3px 8px 2px rgba(0, 0, 0, 0.178);
+      }
+
+      .header-bar {
+        display: flex;
+        /* flex-wrap: wrap; */
+
+        position: relative;
+        justify-content: space-between;
+        flex-direction: column;
+        color: #fff;
+        padding: 10px;
+        border-radius: 5px 5px 0 0;
+        background: linear-gradient(
+          120deg,
+          rgb(31, 179, 190),
+          rgb(40, 190, 201),
+          rgb(9, 129, 103)
+        );
+      }
+
+      .header-bar a {
+        color: rgb(194, 194, 194);
+        text-decoration: none;
+        font-size: 0.7em;
+        display: block;
+        text-align: right;
+        float: none;
+      }
+
+      .post-wrapper {
+        display: flex;
+        justify-content: space-between;
+        background-color: #fff;
+        padding: 20px;
+        border-top: 1px solid rgba(128, 0, 128, 0.384);
+      }
+
+      .post-title {
+        display: flex;
+      }
+
+      .post-title a {
+        text-decoration: none;
+        color: rgb(80, 80, 80);
+        margin-left: 10px;
+      }
+
+      .delete-link {
+        text-decoration: none;
+        font-weight: 900;
+        color: rgb(179, 33, 33);
+        font-size: 22px;
+        line-height: 100%;
+      }
+
+      .search-add-wrapper {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 10px;
+        position: relative;
+      }
+
+      .clear-search {
+        position: relative;
+        right: 20px;
+        opacity: 0;
+        pointer-events: none;
+      }
+
+      .clear-search a {
+        text-align: center;
+        color: rgb(202, 38, 38);
+        font-size: 22px;
+        border-radius: 50%;
+        text-decoration: none;
+      }
+
+      #add-link {
+        position: fixed;
+        border-radius: 50%;
+        bottom: 0;
+        width: 50px;
+        height: 50px;
+        left: calc(50% - 25px);
+        text-align: center;
+        color: rgb(0, 124, 128);
+        text-decoration: none;
+        font-size: 42px;
+        background-color: rgba(240, 240, 240, 0.842);
+        box-shadow: 0px 3px 3px rgba(12, 143, 114, 0.39);
+      }
+
+      input[type="text"],
+      input[type="password"],
+      textarea {
+        border: 2px solid rgb(0, 45, 128);
+        border-radius: 5px;
+        padding: 0.5em;
+        width: 90%;
+      }
+
+      label {
+        padding-top: 10px !important;
+        display: block;
+      }
+
+      .button {
+        border: 2px solid rgb(10, 60, 168);
+        background-color: #ececec;
+        color: rgb(2, 107, 168);
+        padding: 0.5em;
+        font-size: 14px;
+        border-radius: 5px;
+        cursor: pointer;
+        text-decoration: none;
+      }
+
+      .card-body {
+        padding: 20px;
+      }
+    </style>
+  </head>
+
+  <body>
+    <div class="container">{% block content %} {%endblock content%}</div>
+    <script>
+      let search = document.querySelector("input[type='text']");
+      let clearSearch = document.querySelector(".clear-search");
+      if (search.value.trim().length > 0) {
+        clearSearch.style.opacity = 1;
+        console.log("r");
+        clearSearch.style.pointerEvents = "all";
+      } else {
+        clearSearch.style.opacity = 0;
+        clearSearch.style.pointerEvents = "none";
+      }
+      search.addEventListener("input", () => {
+        if (search.value.trim().length > 0) {
+          clearSearch.style.opacity = 1;
+          console.log("r");
+          clearSearch.style.pointerEvents = "all";
+        }
+      });
+    </script>
+  </body>
+</html>
