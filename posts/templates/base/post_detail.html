@@ -1,0 +1,35 @@
+{% extends 'base/index.html' %}{% block content %}
+
+<h1>
+  Post : {{ post }}
+  <span>
+    {% if request.user == post.user %}
+    <a
+      class="delete-link btn btn-warning"
+      href="{% url 'post-delete' post.id %}"
+      >&#215;</a
+    >
+    <a
+      class="btn btn-primary"
+      href="{% url 'post-update' post.id %}"
+      role="button"
+      >edit</a
+    >
+    {% endif %}
+  </span>
+</h1>
+<a href="{% url 'post-update' post.id %}">
+  edit {{request.user}} {{post.user}}
+</a>
+
+<p>{{post.user}}</p>
+
+<p>More info</p>
+<a
+  class="btn btn-outline-primary"
+  href="{% url 'add-bookmark' post.id %}"
+  role="button"
+  >Bookmark</a
+>
+
+{% endblock content %} -->

@@ -3,13 +3,21 @@ from django.shortcuts import render, redirect
 from django.views.generic.list import ListView
 from django.views.generic.detail import DetailView
 from django.views.generic.edit import CreateView, UpdateView, DeleteView, FormView
-from .models import Post
+
 from django.urls import reverse_lazy
 
 from django.contrib.auth.views import LoginView
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth import login
+
+from .models import Post
+from .forms import PostForm
+
+
+def index(request):
+    template_name = 'base/login.html'
+    return render(request, 'base/index.html')
 
 
 class CustomLoginView(LoginView):
@@ -44,32 +52,31 @@ class PostList(LoginRequiredMixin, ListView):
     model = Post
     context_object_name = 'posts'
     template_name = "base/post_list.html"
-    print("hello")
+
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
-        print(context)
+
         context['posts'] = context['posts']
         context['count'] = context['posts'].count()
 
         search_input = self.request.GET.get('search-area') or ''
         if search_input:
             context['posts'] = context['posts'].filter(
-                title__icontains=search_input)
+                company_name__icontains=search_input)
 
         context['search_input'] = search_input
 
         return context
 
 
-class PostDetail(LoginRequiredMixin, DetailView):
+class PostDetail(DetailView):
     model = Post
-    context_object_name = 'post'
-    template_name = 'base/post.html'
+    template_name = "base/post_detail.html"
 
 
 class PostCreate(LoginRequiredMixin, CreateView):
-    model = Post
-    fields = ['title']
+
+    form_class = PostForm
     success_url = reverse_lazy('posts')
     template_name = "base/post_form.html"
 
@@ -80,7 +87,16 @@ class PostCreate(LoginRequiredMixin, CreateView):
 
 class PostUpdate(LoginRequiredMixin, UpdateView):
     model = Post
-    fields = ['title']
+    fields = [
+        'company_name',
+        'location',
+        'industry',
+        'specialization',
+        'products_and_services',
+        'contact',
+        'application_requirements',
+        'application_process',
+        'application_deadline']
     success_url = reverse_lazy('posts')
     template_name = 'base/post_form.html'
 
@@ -90,4 +106,3 @@ class PostDelete(LoginRequiredMixin, DeleteView):
     context_object_name = 'post'
     success_url = reverse_lazy('posts')
     template_name = 'base/post_confirm_delete.html'
-
