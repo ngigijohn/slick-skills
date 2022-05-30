@@ -24,7 +24,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = 'django-insecure-6b&x*zjjnebxunuyd%_um74+jxcywn)jr21dswm&kmb()$w5(o'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG = True
 
 ALLOWED_HOSTS = ['https://slick-skills.herokuapp.com', '127.0.0.1']
 
