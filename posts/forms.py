@@ -1,5 +1,4 @@
-from email.policy import default
-from logging import PlaceHolder
+
 from django.forms import ModelForm
 from django import forms
 from .models import Post
@@ -24,6 +23,12 @@ INDUSTRY_CHOICES = [
     ('Retail', 'Retail'),
     ('Technology', 'Technology'),
     ('Other', 'Other')
+]
+JOB_TYPE_CHOICES = [
+    ('Internship', 'Internship'),
+    ('Part-time', 'Part-time'),
+    ('Fulltime', 'Fulltime'),
+    ('Contract', 'Contract'),
 ]
 
 
@@ -50,13 +55,17 @@ class PostForm(ModelForm):
 
     class Meta:
         model = Post
-        fields = [
-        'company_name',
-        'location',
-        'industry',
-        'specialization', 
-        'products_and_services', 
-        'contact', 
-        'application_requirements', 
-        'application_process',
-        'application_deadline']
+        fields = '__all__'
+        exclude = ['user', 'bookmarks']
+
+        # fields = [
+        #     'company_name',
+        #     'company_pic',
+        #     'location',
+        #     'industry',
+        #     'specialization',
+        #     'products_and_services',
+        #     'contact',
+        #     'application_requirements',
+        #     'application_process',
+        #     'application_deadline']

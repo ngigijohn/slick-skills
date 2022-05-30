@@ -1,0 +1,79 @@
+{% extends 'base/index.html' %}{% block content %}
+<!-- 
+<h1>{{user.userprofile}}</h1>
+
+<div class="col-lg-6 col-md-11 col-10">
+  <div class="row">
+    <div class="card text-white bg-primary">
+      <img class="card-img-top" src="{{ profile.profile_pic.url }}" alt="" />
+      <div class="card-body">
+        <h4 class="card-title">{{ profile.firstname}} {{ profile.lastname}}</h4>
+        <p class="card-text">Text</p>
+      </div>
+    </div>
+  </div>
+</div> -->
+
+<div class="col-lg-6 col-md-11 col-10">
+  <main>
+    <!-- <div class="first-part">
+      <div><a class="home">Home</a></div>
+      <div><i class="far fa-star"></i></div>
+    </div> -->
+    <div class="whats-happening">
+      <div class="header-bar">
+        <div>
+          <h1>Hello {{request.user|title}}</h1>
+          <!-- <h3 style="margin: 0">
+            You have <i>{{ count }}</i> post{{count|pluralize:"s"}}
+          </h3> -->
+        </div>
+        <div class="row">
+          <div class="col">
+            <a
+              class="btn btn-warning"
+              id="add-link"
+              href="{%url 'post-create' %}"
+              >Post</a
+            >
+          </div>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <!--Posts-->
+  <section id="posts">
+    <!-- Post -->
+    <div class="card mb-3" style="max-width: 540px">
+      <div class="row no-gutters">
+        <div class="col-md-4">
+          <img
+            class="card-img-top"
+            src="{{ profile.profile_pic.url }}"
+            alt=""
+          />
+        </div>
+        <div class="col-md-8">
+          <div class="card-body">
+            <h4 class="card-title">
+              {{ profile.firstname}} {{ profile.lastname}}
+            </h4>
+            <p class="card-text">
+              This is a wider card with supporting text below as a natural
+              lead-in to additional content. This content is a little bit
+              longer.
+            </p>
+            <p class="card-text">
+              <small class="text-muted">Last updated 3 mins ago</small>
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  
+    <!-- end post -->
+  </section>
+
+  {% endblock content %} -->
+</div>

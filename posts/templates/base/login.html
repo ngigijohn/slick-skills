@@ -1,17 +1,15 @@
-{% extends 'base/index.html' %}
-{% block content %}
-<div class="header-bar">
-  <h1>Login</h1>
+{% extends 'base/index.html' %} {% block content %}
+<div class="wrapper">
+  <div class="header-bar">
+    <h1>Login</h1>
+  </div>
+  <div class="card-body">
+    <form action="" method="POST">
+      {% csrf_token %} {{form.as_p}}
+      <input class="btn" type="submit" value="Login" />
+    </form>
+
+    <p>Dont have an account? <a href="{% url 'register' %}">Register</a></p>
+  </div>
 </div>
-<div class="card-body">
-  <form action="" method="POST">
-    {% csrf_token %}
-    {{form.as_p}}
-    <input class="button" type="submit" value="Login">
-  </form>
-
-  <p>Dont have an account? <a href="{% url 'register' %}">Register</a></p>
-
-</div>
-
 {% endblock content %}

@@ -1,0 +1,266 @@
+{% extends 'base/index.html' %} {% block content %} {% load static %}
+
+
+    <!--middle block-->
+    <div class="col-lg-6 col-md-11 col-10">
+      <main>
+        <!-- <div class="first-part">
+          <div><a class="home">Home</a></div>
+          <div><i class="far fa-star"></i></div>
+        </div> -->
+        <div class="whats-happening">
+          <div class="header-bar">
+            <div>
+              <h1>Hello {{request.user|title}}</h1>
+              <!-- <h3 style="margin: 0">
+                You have <i>{{ count }}</i> post{{count|pluralize:"s"}}
+              </h3> -->
+              
+            </div>
+            <div class="row">
+              <div class="col">
+                <a
+                  class="btn btn-warning"
+                  id="add-link"
+                  href="{%url 'post-create' %}"
+                  >Post</a
+                >
+              </div>
+            </div>
+          </div>
+        </div>
+      </main>
+
+      <!--Posts-->
+      <section id="posts">
+        <!--1 post-->
+        {% for post in posts %}
+        <!-- Post -->
+        <div class="card mb-3" style="max-width: 540px">
+          <div class="row no-gutters">
+            <div class="col-md-4">
+              <img
+                width="70px"
+                src="{{ post.company_pic.url }}"
+                class="card-img"
+                alt="..."
+              />
+            </div>
+            <div class="col-md-8">
+              <div class="card-body">
+                <h5 class="card-title">
+                  <i><a href="{% url 'post-detail' post.id %}">{{post}}</a></i>
+                </h5>
+                <p class="card-text">
+                  This is a wider card with supporting text below as a natural
+                  lead-in to additional content. This content is a little bit
+                  longer.
+                </p>
+                <p class="card-text">
+                  <small class="text-muted">Last updated 3 mins ago</small>
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        {% endfor %}
+      </section>
+    </div>
+
+    <!--Right  block-->
+    <div class="col-lg-3 d-none d-lg-block" id="rightBlock">
+      <!--search-->
+      <div class="search">
+        <form>
+          <input type="search" placeholder="search twitter" results />
+        </form>
+      </div>
+      <br />
+      <!--proposed profiles-->
+      <div class="other-profiles">
+        <div class="heading">
+          <h5>Who to follow</h5>
+        </div>
+        <div class="profile-1">
+          <div class="profile-img">
+            <img
+              src="assets/images/img_avatar2.png"
+              class="avatar"
+              alt="Avatar"
+            />
+          </div>
+          <div class="profile-name">
+            CTE Magazine <br />
+            <span class="twitter-account">@CTEMagPlus</span>
+          </div>
+          <div class="follow-btn"><button>Follow</button></div>
+        </div>
+        <div class="profile-1">
+          <div class="profile-img">
+            <img
+              src="assets/images/img_avatar.png"
+              class="avatar"
+              alt="Avatar"
+            />
+          </div>
+          <div class="profile-name">
+            CTE Magazine <br />
+            <span class="twitter-account">@CTEMagPlus</span>
+          </div>
+          <div class="follow-btn"><button>Follow</button></div>
+        </div>
+        <div class="profile-1">
+          <div class="profile-img">
+            <img
+              src="assets/images/img_avatar2.png"
+              class="avatar"
+              alt="Avatar"
+            />
+          </div>
+          <div class="profile-name">
+            CTE Magazine <br />
+            <span class="twitter-account">@CTEMagPlus</span>
+          </div>
+          <div class="follow-btn"><button>Follow</button></div>
+        </div>
+        <div class="heading">
+          <a href="#">Show more</a>
+        </div>
+      </div>
+      <br />
+
+      <div id="policy">
+        <span
+          ><strong>Design:</strong>
+          <a href="www.twitter.com/shloch">@shloch</a> +
+          <a href="www.twitter.com/belle_agbor">@belle_agbor</a> </span
+        ><br />
+        <span
+          ><strong>Backend:</strong>
+          <a href="www.twitter.com/shloch">@shloch</a> +
+          <a href="www.twitter.com/truetech_code">@truetech_code</a> </span
+        ><br />
+        <span>CopyRights 2019</span><br />
+        <span>Github: www.xxxx.xxx</span>
+      </div>
+      <br />
+    </div>
+
+
+<div class="content">
+  <div class="row"></div>
+  <div class="row">
+    <!-- <div class="col">
+      <nav id="sidebar">
+        <div class="sidebar-header">
+          <h3>Bootstrap Sidebar</h3>
+        </div>
+
+        <ul class="list-unstyled components">
+          <p>Dummy Heading</p>
+          <li class="active">
+            <a
+              href="#homeSubmenu"
+              data-toggle="collapse"
+              aria-expanded="false"
+              class="dropdown-toggle"
+              >Home</a
+            >
+            <ul class="collapse list-unstyled" id="homeSubmenu">
+              <li>
+                <a href="#">Home 1</a>
+              </li>
+              <li>
+                <a href="#">Home 2</a>
+              </li>
+              <li>
+                <a href="#">Home 3</a>
+              </li>
+            </ul>
+          </li>
+          <li>
+            <a href="#">About</a>
+          </li>
+          <li>
+            <a
+              href="#pageSubmenu"
+              data-toggle="collapse"
+              aria-expanded="false"
+              class="dropdown-toggle"
+              >Pages</a
+            >
+            <ul class="collapse list-unstyled" id="pageSubmenu">
+              <li>
+                <a href="#">Page 1</a>
+              </li>
+              <li>
+                <a href="#">Page 2</a>
+              </li>
+              <li>
+                <a href="#">Page 3</a>
+              </li>
+            </ul>
+          </li>
+          <li>
+            <a href="#">Portfolio</a>
+          </li>
+          <li>
+            <a href="#">Contact</a>
+          </li>
+        </ul>
+      </nav> 
+    </div> -->
+    <div class="col">
+      <div class="container-fluid">
+        <div class="row">
+          <div class="col">
+            <div class="card mb-3" style="max-width: 540px">
+              <div class="row no-gutters">
+                <div class="col-md-4">
+                  <img src="..." class="card-img" alt="..." />
+                </div>
+                <div class="col-md-8">
+                  <div class="card-body">
+                    <h5 class="card-title">Card title</h5>
+                    <p class="card-text">
+                      This is a wider card with supporting text below as a
+                      natural lead-in to additional content. This content is a
+                      little bit longer.
+                    </p>
+                    <p class="card-text">
+                      <small class="text-muted">Last updated 3 mins ago</small>
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="search-add-wrapper">
+  <form action="" method="get" style="margin-top: 20px; display: flex">
+    <input type="text" name="search-area" value="{{search_input}}" />
+    <div class="clear-search"><a href="{% url 'posts' %}">&#215;</a></div>
+    <input class="button" type="submit" value="Search" />
+  </form>
+</div>
+
+<div class="post-items-wrapper">
+  {% for post in posts %}
+  <div class="post-wrapper">
+    <div class="post-company_name">
+      <i><a href="{% url 'post-detail' post.id %}">{{post}}</a></i>
+    </div>
+    <div></div>
+
+    <a class="delete-link" href="{% url 'post-delete' post.id %}">&#215;</a>
+  </div>
+  {% endfor %}
+</div>
+
+{% endblock content %}

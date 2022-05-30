@@ -1,4 +1,139 @@
-{% extends 'base/index.html' %}{% block content %}
+{% extends 'base/index.html' %}{% block content %} {% load static %}
+<main>
+  <!-- Hero Area Start-->
+  <div class="slider-area">
+    <div
+      class="single-slider section-overly slider-height2 d-flex align-items-center"
+      data-background="assets/img/hero/about.jpg"
+    >
+      <div class="container">
+        <div class="row">
+          <div class="col-xl-12">
+            <div class="hero-cap text-center">
+              <h2>{{ post.job_title }}</h2>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- Hero Area End -->
+  <!-- job post company Start -->
+  <div class="job-post-company pt-120 pb-120">
+    <div class="container">
+      <div class="row justify-content-between">
+        <!-- Left Content -->
+        <div class="col-xl-7 col-lg-8">
+          <!-- job single -->
+          <div class="single-job-items mb-50">
+            <div class="job-items">
+              <div class="company-img company-img-details">
+                <a href="{% url 'post-detail' post.id %}"
+                  ><img src="{{ post.company_pic.url }}" alt=""
+                /></a>
+              </div>
+              <div class="job-tittle">
+                <a href="{% url 'post-detail' post.id %}">
+                  <h4>{{ post.job_title }}</h4>
+                </a>
+                <ul>
+                  <li>{{ post.company_name }}</li>
+                  <li><i class="fas fa-map-marker-alt"></i>post.location</li>
+                  <li>{{ post.job_type }}</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+          <!-- job single End -->
+
+          <div class="job-post-details">
+            <div class="post-details1 mb-50">
+              <!-- Small Section Tittle -->
+              <div class="small-section-tittle">
+                <h4>Job Description</h4>
+              </div>
+              <p>{{post.job_description}}</p>
+            </div>
+            <div class="post-details2 mb-50">
+              <!-- Small Section Tittle -->
+              <div class="small-section-tittle">
+                <h4>Required Knowledge, Skills, and Abilities</h4>
+              </div>
+              <p>{{ post.application_requirements }}</p>
+            </div>
+            <div class="post-details2 mb-50">
+              <!-- Small Section Tittle -->
+              <div class="small-section-tittle">
+                <h4>Education + Experience</h4>
+              </div>
+              <p>{{ post.education_and_experience }}</p>
+            </div>
+            <div class="post-details2 mb-50">
+              <!-- Small Section Tittle -->
+              <div class="small-section-tittle">
+                <h4>Application Process</h4>
+              </div>
+              <p>{{ post.application_process }}</p>
+            </div>
+          </div>
+        </div>
+        <!-- Right Content -->
+        <div class="col-xl-4 col-lg-4">
+          <div class="post-details3 mb-50">
+            <!-- Small Section Tittle -->
+            <div class="small-section-tittle">
+              <h4>Job Overview</h4>
+            </div>
+            <ul>
+              <li>Posted date : <span>{{ post.created }}</span></li>
+              <li>Location : <span>{{ post.location }}</span></li>
+              <!-- <li>Vacancy : <span>02</span></li> -->
+              <li>Job nature : <span>{{ post.job_type }}</span></li>
+              <li>
+                Application Deadline :
+                <span>{{ post.application_deadline}}</span>
+              </li>
+            </ul>
+            <div class="apply-btn2">
+              <button
+                onclick="
+                let area = document.createElement('textarea');
+                document.body.appendChild(area);
+                area.value = window.location.href;
+                area.select();
+                document.execCommand('copy');
+                alert('The link has been copied to your clipboard!');
+                body.removeChild(area);   
+                "
+                class="btn"
+              >
+                Share
+              </button>
+            </div>
+          </div>
+          <div class="post-details4 mb-50">
+            <!-- Small Section Tittle -->
+            <div class="small-section-tittle">
+              <h4>Company Information</h4>
+            </div>
+            <span>{{ post.company_name }}</span>
+            <ul>
+              <li>Industry: <span>{{ post.industry }}</span></li>
+              <li>
+                Products & Services:
+                <span>{{ post.products_and_services }}</span>
+              </li>
+              <li>Web : <span>{{post.website}}</span></li>
+              <li>Contact: <span>{{post.contact}}</span></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- job post company End -->
+</main>
+{% endblock content %}
 
 <h1>
   Post : {{ post }}
@@ -29,7 +164,6 @@
   class="btn btn-outline-primary"
   href="{% url 'add-bookmark' post.id %}"
   role="button"
-  >Bookmark</a
->
-
-{% endblock content %} -->
+  ><i class="fa-solid fa-bookmark"></i
+></a>
+<a class="delete-link" href="{% url 'post-delete' post.id %}">&#215;</a>
