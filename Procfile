@@ -1,0 +1,1 @@
+web: gunicorn slickskills.wsgi --log-file -

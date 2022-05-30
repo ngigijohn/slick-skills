@@ -19,6 +19,12 @@
     </div>
   </div>
   <!-- Hero Area End -->
+  <div class="filters">
+    <form action="" method="get">
+      {{my_filter.form}}
+      <input type="submit" value="Filter" />
+    </form>
+  </div>
   <!-- Job List Area Start -->
   <div class="job-listing-area pt-120 pb-120">
     <div class="container">
@@ -27,12 +33,9 @@
         <div class="col-xl-3 col-lg-3 col-md-4">
           <div class="row">
             <div class="col-12">
-              <form
-                action=""
-                method="get"
-                style="margin-top: 20px; display: flex"
-              >
+              <form action="" method="get" style="margin-top: 20px">
                 {{my_filter.form}}
+
                 <input
                   type="text"
                   name="search-area"

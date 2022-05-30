@@ -11,7 +11,7 @@ from django.contrib.auth.mixins import LoginRequiredMixin
 
 from .models import Post
 from .forms import PostForm
-# from .filters import  PostFilter
+from .filters import  PostFilter
 
 # create your views here
 
@@ -32,7 +32,7 @@ class PostList(LoginRequiredMixin, ListView):
         context['posts'] = context['posts']
         context['count'] = context['posts'].count()
 
-        # my_filter = PostFilter(self.request.GET, queryset =self.context['posts'] )
+        my_filter = PostFilter(self.request.GET, queryset = context['posts'] )
         # context['posts'] = my_filter.qs
         # filter by industry
         # filter by location
@@ -42,7 +42,7 @@ class PostList(LoginRequiredMixin, ListView):
         # order by date descending
 
 
-        # context['my_filter'] = my_filter
+        context['my_filter'] = my_filter
         
         search_input = self.request.GET.get('search-area') or ''
         if search_input:

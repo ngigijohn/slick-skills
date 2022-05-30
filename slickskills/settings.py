@@ -24,9 +24,9 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = 'django-insecure-6b&x*zjjnebxunuyd%_um74+jxcywn)jr21dswm&kmb()$w5(o'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['https://slick-skills.herokuapp.com', '127.0.0.1']
 
 
 # Application definition
@@ -40,7 +40,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'posts.apps.PostsConfig',
     'users'
-    # ,'django_filters'
+    ,'django_filters'
 ]
 
 MIDDLEWARE = [
@@ -83,6 +83,18 @@ DATABASES = {
         'NAME': BASE_DIR / 'db.sqlite3',
     }
 }
+
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.postgresql_psycopg2',
+#         'NAME': 'slickskills',
+#         'USER':'postgres',
+#         'PASSWORD': '1',
+#         'HOST': 'localhost',
+#         'PORT':'3306'
+#     }
+# }
+
 
 
 # Password validation

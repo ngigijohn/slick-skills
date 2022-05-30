@@ -1,4 +1,5 @@
 from codecs import lookup_error
+from dataclasses import fields
 import django_filters
 from django_filters import DateFilter, CharFilter
 from .models import Post
@@ -14,5 +15,8 @@ class PostFilter(django_filters.FilterSet):
 
     class Meta:
         model = Post
-        fields = '__all__'
-        exclude = ['company_name', 'website']
+        fields = ['location',
+        'industry',
+        'specialization',]
+        # fields = '__all__'
+        exclude = ['company_name', 'website', 'company_pic']
