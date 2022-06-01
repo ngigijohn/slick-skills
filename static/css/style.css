@@ -483,6 +483,63 @@ hr {
   z-index: -1;
 }
 
+.small-btn {
+  background: #1f2b7b;
+  -moz-user-select: none;
+  text-transform: capitalize;
+  color: #fff;
+  cursor: pointer;
+  display: inline-block;
+  font-size: 14px;
+  font-weight: 500;
+  letter-spacing: 1px;
+  line-height: 0;
+  margin-bottom: 0;
+  padding: 1.5em;
+  border-radius: 0;
+  margin: 10px;
+  cursor: pointer;
+  -webkit-transition: color 0.4s linear;
+  transition: color 0.4s linear;
+  position: relative;
+  z-index: 1;
+  border: 0;
+  overflow: hidden;
+  margin: 0;
+}
+
+.small-btn::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 101%;
+  height: 101%;
+  background: #1f2b7b;
+  z-index: 1;
+  border-radius: 5px;
+  -webkit-transition: -webkit-transform 0.5s;
+  transition: -webkit-transform 0.5s;
+  transition: transform 0.5s;
+  transition: transform 0.5s, -webkit-transform 0.5s;
+  -webkit-transition-timing-function: ease;
+          transition-timing-function: ease;
+  -webkit-transform-origin: 0 0;
+          transform-origin: 0 0;
+  -webkit-transition-timing-function: cubic-bezier(0.5, 1.6, 0.4, 0.7);
+          transition-timing-function: cubic-bezier(0.5, 1.6, 0.4, 0.7);
+  -webkit-transform: scaleX(0);
+          transform: scaleX(0);
+  border-radius: 0;
+}
+
+.small-btn:hover::before {
+  -webkit-transform: scaleX(1);
+          transform: scaleX(1);
+  color: #fff !important;
+  z-index: -1;
+}
+
 .head-btn2 {
   background: none;
   border: 1px solid #1f2b7b;
@@ -491,7 +548,7 @@ hr {
 
 @media only screen and (min-width: 992px) and (max-width: 1199px) {
   .head-btn2 {
-    padding: 27px 34px;
+    padding: 1em 2em;
   }
 }
 
@@ -509,7 +566,7 @@ hr {
 
 @media only screen and (min-width: 992px) and (max-width: 1199px) {
   .head-btn1 {
-    padding: 27px 27px;
+    padding: 1em 2em;
   }
 }
 
@@ -6624,22 +6681,23 @@ form.search-box .search-form a {
 .support-company-area .support-location-img .support-img-cap {
   position: absolute;
   bottom: 0px;
-  background: #1f2b7b;
+  background: #dac803;
   padding: 59px 28px;
   border-radius: 5px;
-  left: -100px;
+  left: -10px;
 }
 
 @media only screen and (min-width: 992px) and (max-width: 1199px) {
   .support-company-area .support-location-img .support-img-cap {
+    margin-top: 200px;
     padding: 27px 18px;
-    left: -59px;
   }
 }
 
 @media (max-width: 767px) {
   .support-company-area .support-location-img .support-img-cap {
     left: 0px;
+    margin-left: 70%;
     padding: 35px 0px;
   }
 }
@@ -6647,6 +6705,7 @@ form.search-box .search-form a {
 @media only screen and (min-width: 576px) and (max-width: 767px) {
   .support-company-area .support-location-img .support-img-cap {
     left: 0px;
+    margin-left: 70%;
     padding: 35px 18px;
   }
 }
@@ -6654,6 +6713,7 @@ form.search-box .search-form a {
 @media only screen and (min-width: 768px) and (max-width: 991px) {
   .support-company-area .support-location-img .support-img-cap {
     left: 0px;
+    margin-left: 70%;
     padding: 35px 18px;
   }
 }
@@ -7731,7 +7791,7 @@ form.search-box .search-form a {
 }
 
 .pagination-area {
-  background-color: red;
+  background-color: white;
 }
 
 @media only screen and (min-width: 992px) and (max-width: 1199px) {
@@ -7774,7 +7834,7 @@ form.search-box .search-form a {
   -webkit-box-shadow: none;
           box-shadow: none;
   outline: 0;
-  color: #777777;
+  color: #454444;
   padding: 11px 12px;
   background: #ffffff;
   margin: 0 3px;

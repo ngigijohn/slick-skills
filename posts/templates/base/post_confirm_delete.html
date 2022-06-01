@@ -1,16 +1,21 @@
 {% extends 'base/index.html' %}
 {% block content %}
+
+<div class="wrapper post-form">
+
 <div class="header-bar">
-    <a href="{% url 'posts' %}">&#8592; back</a>
+    <a href="{% url 'post-detail' post.id %}">&#8592; back</a>
 </div>
 <div class="card-body">
     <form action="" method="POST">
-        <p>Do you wish to delete " {{post}} "</p>
+        <h3>Do you wish to delete " {{post}} "</h3>
         {% csrf_token %}
-
-        <input class="button" type="submit" value="Delete">
+        <input class="genric-btn danger" type="submit" value="Delete">
     </form>
 </div>
+    
+</div>
+
 
 
 {% endblock content %}

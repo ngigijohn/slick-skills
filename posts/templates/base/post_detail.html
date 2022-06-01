@@ -40,6 +40,21 @@
                   <li>{{ post.company_name }}</li>
                   <li><i class="fas fa-map-marker-alt"></i>post.location</li>
                   <li>{{ post.job_type }}</li>
+
+                  {% if request.user == post.user %}
+                  <li>
+                    <a href="{% url 'post-update' post.id %}">
+                      <i class="fas fa-edit"></i>
+                      <span>Edit</span>
+                    </a>
+                  </li>
+                  <li>
+                    <a href="{% url 'post-delete' post.id %}">
+                      <i class="fa fa-trash" aria-hidden="true"></i>
+                      <span>Delete</span>
+                    </a>
+                  </li>
+                  {% endif %}
                 </ul>
               </div>
             </div>

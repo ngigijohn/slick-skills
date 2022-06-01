@@ -1,7 +1,12 @@
 {% extends 'base/index.html' %} {% block content %}
 <div class="wrapper post-form">
   <div class="header-bar">
-    <a href="{% url 'posts' %}">&#8592; back</a>
+    {%if post %}
+    <a href="{% url 'post-detail' post.id %}">&#8592; back</a>
+
+    {% else %}
+    <a href="{% url 'home' %}">&#8592; back</a>
+    {% endif %}
   </div>
   <div class="card-body">
     <form method="POST" action="">

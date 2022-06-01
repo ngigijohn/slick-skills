@@ -7,25 +7,30 @@
         .support-img-cap{
             position: absolute;
 			bottom: 0px;
-			background: #1f2b7b;
+			background: #dac803;
 			padding:59px 28px;
 			border-radius: 5px;
-			left: -100px;
+			left: -10px;
 			@media #{$lg}{
+				margin-top: 200px;
 				padding: 27px 18px;
-				left: -59px;
+				
 			}
 			@media #{$xs}{
 				left: 0px;
+				margin-left: 70%;
 				padding: 35px 0px;
 			}
 			@media #{$sm}{
 				left: 0px;
+				margin-left: 70%;
 				padding: 35px 18px;
 			}
 			@media #{$md}{
 				left: 0px;
+				margin-left: 70%;
 				padding: 35px 18px;
+				
 			}
             span{
                

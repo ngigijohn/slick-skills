@@ -4,13 +4,9 @@ from .models import UserProfile
 
 
 class UserProfileForm(ModelForm):
-
     email = forms.CharField(
         label='Email Address',
         widget=forms.TextInput(attrs={'placeholder': 'Email Address'}))
-    username = forms.CharField(
-        label='Username',
-        widget=forms.TextInput(attrs={'placeholder': 'Username'}))
     firstname = forms.CharField(
         label='First Name',
         widget=forms.TextInput(attrs={'placeholder': 'Mark'}))
@@ -30,5 +26,5 @@ class UserProfileForm(ModelForm):
     class Meta:
         model = UserProfile
         fields = [
-         'profile_pic', 'email', 'username', 'firstname', 'lastname', 'institution', 'major', 'phone_number'
+         'profile_pic', 'email', 'firstname', 'lastname', 'institution', 'major', 'phone_number'
         ]

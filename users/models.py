@@ -3,9 +3,7 @@ from django.db import models
 from django.contrib.auth.models import User
 from django.utils import timezone
 from django.utils.translation import gettext_lazy as _
-from django.contrib.auth.models import AbstractBaseUser, PermissionsMixin
-import uuid
-from .managers import CustomAccountManager
+
 
 # Create your models here.
 
@@ -19,5 +17,8 @@ class UserProfile(models.Model):
     major = models.CharField(_("Major"), max_length=150)
     profile_pic = models.ImageField(blank=True, null=True, default='default.png', upload_to='profile_pics')
     phone_number = models.CharField(_("Phone number"), max_length=50)
+    
     def __str__(self):
         return self.user.username + "Profile"
+
+    

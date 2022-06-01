@@ -150,7 +150,7 @@
               <div class="row">
                 <div class="col-lg-12">
                   <div class="count-job mb-35">
-                    <span>39, 782 Jobs found</span>
+                    <span>Found {{posts.count}} job{{ post.count|pluralize }}</span>
                     <!-- Select job items start -->
                     <div class="select-job-items">
                       <span>Sort by</span>
@@ -216,34 +216,58 @@
 
   <!--Pagination Start  -->
   <div class="pagination-area pb-115 text-center">
-    <div class="pagination justify-content-center">
-      <span class="step-links">
-        {% if page_obj.has_previous %}
-        <a class="page-link theme-bg" href="?page=1">&laquo; first</a>
-        <a
-          class="page-link theme-bg"
-          href="?page={{ page_obj.previous_page_number }}"
-          >previous</a
-        >
-        {% endif %}
+    <div class="container">
+      <div class="row">
+        <div class="col-xl-12">
+          <div class="single-wrap d-flex justify-content-center">
+            <nav aria-label="Page navigation example">
+              <ul class="step-links pagination justify-content-start">
+                {% if page_obj.has_previous %}
+                <li class="page-item">
+                  <a class="page-link" href="?page=1">&laquo; first</a>
+                </li>
+                <li class="page-item">
+                  <a
+                    class="page-link"
+                    href="?page={{ page_obj.previous_page_number }}"
+                    >previous</a
+                  >
+                </li>
 
-        <span class="current">
-          Page {{ page_obj.number }} of {{ page_obj.paginator.num_pages }}.
-        </span>
+                {% endif %}
+                <li class="page-item active">
+                  <a class="page-link" href="">{{ page_obj.number }}</a>
+                </li>
+                {% if page_obj.has_next %}
+                <li class="page-item">
+                  <a
+                    class="page-link"
+                    href="?page={{ page_obj.next_page_number }}"
+                    >{{ page_obj.next_page_number }}</a
+                  >
+                </li>
 
-        {% if page_obj.has_next %}
-        <a
-          class="page-link theme-bg"
-          href="?page={{ page_obj.next_page_number }}"
-          >next</a
-        >
-        <a
-          class="page-link theme-bg"
-          href="?page={{ page_obj.paginator.num_pages }}"
-          >last &raquo;</a
-        >
-        {% endif %}
-      </span>
+                {% endif %} {% if page_obj.has_next %}
+                <li class="page-item">
+                  <a
+                    class="page-link"
+                    href="?page={{ page_obj.next_page_number }}"
+                    >next</a
+                  >
+                </li>
+                <li class="page-item">
+                  <a
+                    class="page-link"
+                    href="?page={{ page_obj.paginator.num_pages }}"
+                    >last &raquo;</a
+                  >
+                </li>
+                {% endif %}
+              </ul>
+            </nav>
+          </div>
+        </div>
+      </div>
     </div>
   </div>
   <!--Pagination End  -->

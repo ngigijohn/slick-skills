@@ -1,4 +1,5 @@
-from django.http import HttpResponseRedirect
+
+from django.http import HttpResponse, HttpResponseRedirect
 from django.shortcuts import get_object_or_404, redirect, render
 from posts.models import Post
 from django.contrib.auth.decorators import login_required
@@ -13,8 +14,20 @@ from django.views.generic.edit import CreateView, UpdateView
 from django.urls import reverse_lazy
 from .models import UserProfile
 from .forms import UserProfileForm
+from django.core.mail import send_mail
+from django.conf import settings
 
 # Create your views here.
+
+
+def email(request):
+    subject = 'Thank you for registering to our site'
+    message = ' it  means a world to us '
+    email_from = settings.EMAIL_HOST_USER
+    recipient_list = ['joncarsel@gmail.com',]
+    send_mail( subject, message, email_from, recipient_list )
+    # return redirect('base/verify-email.html')
+    return HttpResponse('Email sent')
 
 
 def index(request):
@@ -56,7 +69,8 @@ def add_bookmark(request, pk):
         post.bookmarks.remove(request.user)
     else:
         post.bookmarks.add(request.user)
-    return HttpResponseRedirect(request.META['HTTP_REFERER'])
+        return HttpResponse("Hello World")
+    # return HttpResponseRedirect(request.META['HTTP_REFERER'])
 
 
 class UsersList(LoginRequiredMixin, ListView):
@@ -82,7 +96,8 @@ class UserProfileCreate(LoginRequiredMixin, CreateView):
 
 
 class UserProfileUpdate(LoginRequiredMixin, UpdateView):
-    model = UserProfileForm
-    fields = '__all__'
-    success_url = reverse_lazy('user-profile')
+
+    model = UserProfile
+    form_class = UserProfileForm
+    success_url = reverse_lazy('users')
     template_name = 'base/user_form.html'

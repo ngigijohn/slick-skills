@@ -71,17 +71,9 @@ class PostCreate(LoginRequiredMixin, CreateView):
 
 class PostUpdate(LoginRequiredMixin, UpdateView):
     model = Post
-    fields = [
-        'company_name',
-        'company_pic',
-        'location',
-        'industry',
-        'specialization',
-        'products_and_services',
-        'contact',
-        'application_requirements',
-        'application_process',
-        'application_deadline']
+    form_class = PostForm
+    # fields = '__all__'
+    # exclude= ['user','bookmarks']
     success_url = reverse_lazy('posts')
     template_name = 'base/post_form.html'
 
@@ -94,6 +86,7 @@ class PostDelete(LoginRequiredMixin, DeleteView):
 
 
 class BookmarkedPostList(LoginRequiredMixin, ListView):
+    
     model = Post
     context_object_name = 'posts'
     template_name = "base/bookmarks_list.html"
@@ -101,5 +94,4 @@ class BookmarkedPostList(LoginRequiredMixin, ListView):
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
         context['posts'] = context['posts'].filter(bookmarks=self.request.user)
-
         return context

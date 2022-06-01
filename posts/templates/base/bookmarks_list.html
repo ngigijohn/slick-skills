@@ -1,266 +1,111 @@
 {% extends 'base/index.html' %} {% block content %} {% load static %}
 
-
-    <!--middle block-->
-    <div class="col-lg-6 col-md-11 col-10">
-      <main>
-        <!-- <div class="first-part">
-          <div><a class="home">Home</a></div>
-          <div><i class="far fa-star"></i></div>
-        </div> -->
-        <div class="whats-happening">
-          <div class="header-bar">
-            <div>
-              <h1>Hello {{request.user|title}}</h1>
-              <!-- <h3 style="margin: 0">
-                You have <i>{{ count }}</i> post{{count|pluralize:"s"}}
-              </h3> -->
-              
-            </div>
-            <div class="row">
-              <div class="col">
-                <a
-                  class="btn btn-warning"
-                  id="add-link"
-                  href="{%url 'post-create' %}"
-                  >Post</a
-                >
-              </div>
-            </div>
-          </div>
-        </div>
-      </main>
-
-      <!--Posts-->
-      <section id="posts">
-        <!--1 post-->
-        {% for post in posts %}
-        <!-- Post -->
-        <div class="card mb-3" style="max-width: 540px">
-          <div class="row no-gutters">
-            <div class="col-md-4">
-              <img
-                width="70px"
-                src="{{ post.company_pic.url }}"
-                class="card-img"
-                alt="..."
-              />
-            </div>
-            <div class="col-md-8">
-              <div class="card-body">
-                <h5 class="card-title">
-                  <i><a href="{% url 'post-detail' post.id %}">{{post}}</a></i>
-                </h5>
-                <p class="card-text">
-                  This is a wider card with supporting text below as a natural
-                  lead-in to additional content. This content is a little bit
-                  longer.
-                </p>
-                <p class="card-text">
-                  <small class="text-muted">Last updated 3 mins ago</small>
-                </p>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        {% endfor %}
-      </section>
-    </div>
-
-    <!--Right  block-->
-    <div class="col-lg-3 d-none d-lg-block" id="rightBlock">
-      <!--search-->
-      <div class="search">
-        <form>
-          <input type="search" placeholder="search twitter" results />
-        </form>
-      </div>
-      <br />
-      <!--proposed profiles-->
-      <div class="other-profiles">
-        <div class="heading">
-          <h5>Who to follow</h5>
-        </div>
-        <div class="profile-1">
-          <div class="profile-img">
-            <img
-              src="assets/images/img_avatar2.png"
-              class="avatar"
-              alt="Avatar"
-            />
-          </div>
-          <div class="profile-name">
-            CTE Magazine <br />
-            <span class="twitter-account">@CTEMagPlus</span>
-          </div>
-          <div class="follow-btn"><button>Follow</button></div>
-        </div>
-        <div class="profile-1">
-          <div class="profile-img">
-            <img
-              src="assets/images/img_avatar.png"
-              class="avatar"
-              alt="Avatar"
-            />
-          </div>
-          <div class="profile-name">
-            CTE Magazine <br />
-            <span class="twitter-account">@CTEMagPlus</span>
-          </div>
-          <div class="follow-btn"><button>Follow</button></div>
-        </div>
-        <div class="profile-1">
-          <div class="profile-img">
-            <img
-              src="assets/images/img_avatar2.png"
-              class="avatar"
-              alt="Avatar"
-            />
-          </div>
-          <div class="profile-name">
-            CTE Magazine <br />
-            <span class="twitter-account">@CTEMagPlus</span>
-          </div>
-          <div class="follow-btn"><button>Follow</button></div>
-        </div>
-        <div class="heading">
-          <a href="#">Show more</a>
-        </div>
-      </div>
-      <br />
-
-      <div id="policy">
-        <span
-          ><strong>Design:</strong>
-          <a href="www.twitter.com/shloch">@shloch</a> +
-          <a href="www.twitter.com/belle_agbor">@belle_agbor</a> </span
-        ><br />
-        <span
-          ><strong>Backend:</strong>
-          <a href="www.twitter.com/shloch">@shloch</a> +
-          <a href="www.twitter.com/truetech_code">@truetech_code</a> </span
-        ><br />
-        <span>CopyRights 2019</span><br />
-        <span>Github: www.xxxx.xxx</span>
-      </div>
-      <br />
-    </div>
-
-
-<div class="content">
-  <div class="row"></div>
-  <div class="row">
-    <!-- <div class="col">
-      <nav id="sidebar">
-        <div class="sidebar-header">
-          <h3>Bootstrap Sidebar</h3>
-        </div>
-
-        <ul class="list-unstyled components">
-          <p>Dummy Heading</p>
-          <li class="active">
-            <a
-              href="#homeSubmenu"
-              data-toggle="collapse"
-              aria-expanded="false"
-              class="dropdown-toggle"
-              >Home</a
-            >
-            <ul class="collapse list-unstyled" id="homeSubmenu">
-              <li>
-                <a href="#">Home 1</a>
-              </li>
-              <li>
-                <a href="#">Home 2</a>
-              </li>
-              <li>
-                <a href="#">Home 3</a>
-              </li>
-            </ul>
-          </li>
-          <li>
-            <a href="#">About</a>
-          </li>
-          <li>
-            <a
-              href="#pageSubmenu"
-              data-toggle="collapse"
-              aria-expanded="false"
-              class="dropdown-toggle"
-              >Pages</a
-            >
-            <ul class="collapse list-unstyled" id="pageSubmenu">
-              <li>
-                <a href="#">Page 1</a>
-              </li>
-              <li>
-                <a href="#">Page 2</a>
-              </li>
-              <li>
-                <a href="#">Page 3</a>
-              </li>
-            </ul>
-          </li>
-          <li>
-            <a href="#">Portfolio</a>
-          </li>
-          <li>
-            <a href="#">Contact</a>
-          </li>
-        </ul>
-      </nav> 
-    </div> -->
-    <div class="col">
-      <div class="container-fluid">
+<main>
+  <!-- Hero Area Start-->
+  <div class="slider-area">
+    <div
+      class="single-slider section-overly slider-height2 d-flex align-items-center"
+      data-background="assets/img/hero/about.jpg"
+    >
+      <div class="container">
         <div class="row">
-          <div class="col">
-            <div class="card mb-3" style="max-width: 540px">
-              <div class="row no-gutters">
-                <div class="col-md-4">
-                  <img src="..." class="card-img" alt="..." />
-                </div>
-                <div class="col-md-8">
-                  <div class="card-body">
-                    <h5 class="card-title">Card title</h5>
-                    <p class="card-text">
-                      This is a wider card with supporting text below as a
-                      natural lead-in to additional content. This content is a
-                      little bit longer.
-                    </p>
-                    <p class="card-text">
-                      <small class="text-muted">Last updated 3 mins ago</small>
-                    </p>
+          <div class="col-xl-12">
+            <div class="hero-cap text-center">
+              <h2>Bookmarked opportunities for {{request.user|title}}</h2>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- Hero Area End -->
+  <!-- <div class="filters">
+    <form action="" method="get">
+      {{my_filter.form}}
+      <input type="submit" value="Filter" />
+    </form>
+  </div> -->
+  <!-- Job List Area Start -->
+  <div class="job-listing-area pt-120 pb-120">
+    <div class="container">
+      <div class="row">
+        <!-- Left content -->
+        <div class="col-xl-2 col-lg-2 col-md-2">
+          <!-- Job Category Listing End -->
+        </div>
+        <!-- Right content -->
+        <div class="col-xl-9 col-lg-9 col-md-8">
+          <!-- Featured_job_start -->
+          <section class="featured-job-area">
+            <div class="container">
+              <!-- Count of Job list Start -->
+              <div class="row">
+                <div class="col-lg-12">
+                  <div class="count-job mb-35">
+                    <span>Found {{posts.count}} bookmark{{ post.count|pluralize }}</span>
+                    <!-- Select job items start -->
+                    <div class="select-job-items">
+                      <span>Sort by</span>
+                      <select name="select">
+                        <option value="">None</option>
+                        <option value="">job list</option>
+                        <option value="">job list</option>
+                        <option value="">job list</option>
+                      </select>
+                    </div>
+                    <!--  Select job items End-->
                   </div>
                 </div>
               </div>
+              <!-- Count of Job list End -->
+              <!-- single-job-content -->
+              {% for post in posts %}
+              <div class="single-job-items mb-30">
+                <div class="job-items">
+                  <div class="company-img">
+                    <a href="{% url 'post-detail' post.id %}"
+                      ><img
+                        src="{{ post.company_pic.url }}"
+                        alt="post.company_name"
+                    /></a>
+                  </div>
+                  <div class="job-tittle job-tittle2">
+                    <a href="{% url 'post-detail' post.id %}">
+                      <h4>{{post.job_title}}</h4>
+                    </a>
+                    <ul>
+                      <li>{{ post.company_name }}</li>
+                      <li>
+                        <i class="fas fa-map-marker-alt"></i>{{post.location}}
+                      </li>
+                      <li>
+                        {% if request.user.is_authenticated %}
+                        <a href="{% url 'add-bookmark' user.id %}">
+                          <i class="fa fa-bookmark" aria-hidden="true"></i>
+                        </a>
+                        {% endif %}
+                      </li>
+                    </ul>
+                  </div>
+                </div>
+                <div class="items-link items-link2 f-right">
+                  <a href="{% url 'post-detail' post.id %}"
+                    >{{post.job_type}}</a
+                  >
+                  <span>{{post.created}}</span>
+                </div>
+              </div>
+              <!-- end-single-job-content -->
+              {% endfor %}
             </div>
-          </div>
+          </section>
+          <!-- Featured_job_end -->
         </div>
       </div>
     </div>
   </div>
-</div>
-
-<div class="search-add-wrapper">
-  <form action="" method="get" style="margin-top: 20px; display: flex">
-    <input type="text" name="search-area" value="{{search_input}}" />
-    <div class="clear-search"><a href="{% url 'posts' %}">&#215;</a></div>
-    <input class="button" type="submit" value="Search" />
-  </form>
-</div>
-
-<div class="post-items-wrapper">
-  {% for post in posts %}
-  <div class="post-wrapper">
-    <div class="post-company_name">
-      <i><a href="{% url 'post-detail' post.id %}">{{post}}</a></i>
-    </div>
-    <div></div>
-
-    <a class="delete-link" href="{% url 'post-delete' post.id %}">&#215;</a>
-  </div>
-  {% endfor %}
-</div>
+  <!-- Job List Area End -->
+</main>
+<script src="{% static '/js/clearSearch.js' %}"></script>
 
 {% endblock content %}

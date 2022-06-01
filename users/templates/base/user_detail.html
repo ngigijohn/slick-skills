@@ -1,51 +1,11 @@
 {% extends 'base/index.html' %}{% block content %}
-<!-- 
-<h1>{{user.userprofile}}</h1>
 
-<div class="col-lg-6 col-md-11 col-10">
-  <div class="row">
-    <div class="card text-white bg-primary">
-      <img class="card-img-top" src="{{ profile.profile_pic.url }}" alt="" />
-      <div class="card-body">
-        <h4 class="card-title">{{ profile.firstname}} {{ profile.lastname}}</h4>
-        <p class="card-text">Text</p>
-      </div>
+<main>
+  <div class="wrapper post-form">
+    <div class="header-bar">
+      <a href="{% url 'users'%}">&#8592; back</a>
     </div>
-  </div>
-</div> -->
-
-<div class="col-lg-6 col-md-11 col-10">
-  <main>
-    <!-- <div class="first-part">
-      <div><a class="home">Home</a></div>
-      <div><i class="far fa-star"></i></div>
-    </div> -->
-    <div class="whats-happening">
-      <div class="header-bar">
-        <div>
-          <h1>Hello {{request.user|title}}</h1>
-          <!-- <h3 style="margin: 0">
-            You have <i>{{ count }}</i> post{{count|pluralize:"s"}}
-          </h3> -->
-        </div>
-        <div class="row">
-          <div class="col">
-            <a
-              class="btn btn-warning"
-              id="add-link"
-              href="{%url 'post-create' %}"
-              >Post</a
-            >
-          </div>
-        </div>
-      </div>
-    </div>
-  </main>
-
-  <!--Posts-->
-  <section id="posts">
-    <!-- Post -->
-    <div class="card mb-3" style="max-width: 540px">
+    <div class="card mb-3">
       <div class="row no-gutters">
         <div class="col-md-4">
           <img
@@ -57,23 +17,26 @@
         <div class="col-md-8">
           <div class="card-body">
             <h4 class="card-title">
-              {{ profile.firstname}} {{ profile.lastname}}
+              {{ profile.firstname}} {{ profile.lastname}} <small><i>{{profile.institution}}</i></small>
             </h4>
+            <i>{{profile.email}}</i>
             <p class="card-text">
-              This is a wider card with supporting text below as a natural
-              lead-in to additional content. This content is a little bit
-              longer.
+              {{profile.major}}
             </p>
             <p class="card-text">
-              <small class="text-muted">Last updated 3 mins ago</small>
+              <small class="text-muted">{{profile.phone_number}}</small>
             </p>
           </div>
         </div>
       </div>
     </div>
-  
-    <!-- end post -->
-  </section>
+  </div>
+</main>
 
-  {% endblock content %} -->
-</div>
+<!--Posts-->
+
+<!-- Post -->
+
+<!-- end post -->
+
+{% endblock content %} -->
