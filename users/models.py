@@ -10,7 +10,7 @@ from django.utils.translation import gettext_lazy as _
 
 class UserProfile(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE)
-    email = models.EmailField(_("Email address"), unique=True, max_length=254)
+    email = models.EmailField(_("Email address"),blank= True,  max_length=254)
     firstname = models.CharField(max_length=150)
     lastname = models.CharField(max_length=150)
     institution = models.CharField(_("Institution"), max_length=150)

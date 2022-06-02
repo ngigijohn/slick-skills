@@ -1,4 +1,4 @@
-{% extends 'base/index.html' %} {% block content %}
+{% extends 'base/index.html' %} {% block content %}{% load static %}
 <main>
   <!-- slider Area Start-->
   <div class="slider-area">
@@ -6,7 +6,7 @@
     <div class="slider-active">
       <div
         class="single-slider slider-height d-flex align-items-center"
-        data-background="assets/img/hero/h1_hero.jpg"
+        data-background="{% static 'images/backgrounds/bg1.jpg'%}"
       >
         <div class="container">
           <div class="row">
@@ -164,7 +164,7 @@
   <!-- Online CV Area Start -->
   <div
     class="online-cv cv-bg section-overly pt-90 pb-120"
-    data-background="assets/img/gallery/cv_bg.jpg"
+    data-background="{% static 'images/backgrounds/bg1.jpg'%}"
   >
     <div class="container">
       <div class="row justify-content-center">
@@ -240,7 +240,7 @@
   <!-- How  Apply Process Start-->
   <div
     class="apply-process-area apply-bg pt-150 pb-150"
-    data-background="assets/img/gallery/how-applybg.png"
+    data-background="{% static 'images/backgrounds/bg1.jpg'%}"
   >
     <div class="container">
       <!-- Section Tittle -->
@@ -336,7 +336,7 @@
         </div>
         <div class="col-xl-6 col-lg-6">
           <div class="support-location-img">
-            <img src="{{ profile.profile_pic.url }}" alt="" />
+            <img src="{% static 'images/backgrounds/bg1.jpg'%}" alt="" />
             <div class="support-img-cap text-center">
               <p>Since</p>
               <span>1994</span>

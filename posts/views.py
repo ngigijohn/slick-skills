@@ -21,10 +21,18 @@ def home(request):
 
 
 class PostList(LoginRequiredMixin, ListView):
-    paginate_by = 1
+    paginate_by = 15
     model = Post
     context_object_name = 'posts'
     template_name = "base/post_list.html"
+
+    def get_queryset(self):
+        qs = super().get_queryset()
+        print(qs)
+        my_filter = PostFilter(self.request.GET, queryset = qs )
+        print(my_filter)
+        return my_filter.qs
+
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
@@ -32,7 +40,8 @@ class PostList(LoginRequiredMixin, ListView):
         context['posts'] = context['posts']
         context['count'] = context['posts'].count()
 
-        my_filter = PostFilter(self.request.GET, queryset = context['posts'] )
+        my_filter = PostFilter(self.request.GET, queryset = self.get_queryset())
+        # my_filter = PostFilter(self.request.GET, queryset = context['posts'] )
         # context['posts'] = my_filter.qs
         # filter by industry
         # filter by location

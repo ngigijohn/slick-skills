@@ -5,20 +5,7 @@
   </div>
   <div class="card-body">
     <form action="" method="post">
-      {% csrf_token %}
-      <label for="username">{{form.username.label}}</label>
-      {{form.username}}
-
-      <label for="password1">{{form.password1.label}}</label>
-      {{form.password1}}
-      <p>
-        <small style="font-size: 0.5em; color: red"
-          >Use a strong password with numbers and special characters</small
-        >
-      </p>
-
-      <label for="password2">{{form.password2.label}}</label>
-      {{form.password2}}
+      {% csrf_token %} {{form.as_p}}
       <input
         style="margin-top: 10px"
         class="btn"
