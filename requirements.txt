@@ -4,6 +4,8 @@ class-registry==2.1.2
 distlib==0.3.4
 Django==3.2.13
 django-filter==21.1
+django-suit==0.2.25
+Faker==13.12.0
 filelock==3.7.0
 gunicorn==20.1.0
 importlib-metadata==4.11.3

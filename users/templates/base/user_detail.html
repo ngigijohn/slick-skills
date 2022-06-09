@@ -14,15 +14,22 @@
             alt=""
           />
         </div>
-        <div class="col-md-8">
+        <div class="col-md-7">
           <div class="card-body">
             <h4 class="card-title">
-              {{ profile.firstname}} {{ profile.lastname}} <small><i>{{profile.institution}}</i></small>
+              {{ profile.firstname}} {{ profile.lastname}}
+              <small><i>{{profile.institution}}</i></small>
+
+              {%if request.user == profile.user %}
+              <span style="float: right">
+                <a href="{%url 'user-profile-update' user.userprofile.id %}">
+                  <i class="fas fa-edit"></i>
+                </a>
+              </span>
+              {% endif %}
             </h4>
             <i>{{profile.email}}</i>
-            <p class="card-text">
-              {{profile.major}}
-            </p>
+            <p class="card-text">{{profile.major}}</p>
             <p class="card-text">
               <small class="text-muted">{{profile.phone_number}}</small>
             </p>

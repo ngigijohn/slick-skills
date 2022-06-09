@@ -69,8 +69,8 @@ def add_bookmark(request, pk):
         post.bookmarks.remove(request.user)
     else:
         post.bookmarks.add(request.user)
-        return HttpResponse("Hello World")
-    # return HttpResponseRedirect(request.META['HTTP_REFERER'])
+
+    return HttpResponseRedirect(request.META['HTTP_REFERER'])
 
 
 class UsersList(LoginRequiredMixin, ListView):
@@ -87,7 +87,7 @@ class UserProfile(DetailView):
 
 class UserProfileCreate(LoginRequiredMixin, CreateView):
     form_class = UserProfileForm
-    success_url = reverse_lazy('users' )
+    success_url = reverse_lazy('user-profile' )
     template_name = "base/user_form.html"
 
     def form_valid(self, form):
@@ -96,8 +96,6 @@ class UserProfileCreate(LoginRequiredMixin, CreateView):
 
 
 class UserProfileUpdate(LoginRequiredMixin, UpdateView):
-
-    model = UserProfile
     form_class = UserProfileForm
-    success_url = reverse_lazy('users')
+    success_url = reverse_lazy('user-profile',)
     template_name = 'base/user_form.html'

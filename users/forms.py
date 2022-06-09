@@ -4,6 +4,7 @@ from .models import UserProfile
 
 
 class UserProfileForm(ModelForm):
+    profile_pic= forms.ImageField()
     email = forms.CharField(
         label='Email Address',
         widget=forms.TextInput(attrs={'placeholder': 'Email Address'}))

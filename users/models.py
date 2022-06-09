@@ -19,6 +19,6 @@ class UserProfile(models.Model):
     phone_number = models.CharField(_("Phone number"), max_length=50)
     
     def __str__(self):
-        return self.user.username + "Profile"
+        return self.user.username + "'s Profile"
 
     

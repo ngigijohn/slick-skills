@@ -32,6 +32,30 @@ JOB_TYPE_CHOICES = [
     ('Contract', 'Contract'),
 ]
 
+MAJOR_CHOICES = [
+    'BBA Accounting',
+    'BBA Finance',
+    'BBA Management',
+    'BBIT',
+    'BST Automotive Technology',
+    'BSc Software Engineering',
+    'Bachelor of Education',
+    'Bachelor of Music',
+    'Bachelor of Arts Development Studies',
+    'Bachelor of Arts Theology',
+    'Bachelor of Science in Medical Laboratory Science',
+    'Bachelor of Science in Public Health',
+    'Bachelor of Science in Nursing',
+    'Bachelor of Science in Agribusiness',
+    'Bachelor of Science in Agriculture',
+    'Bachelor of Science in Electronics Technology',
+    'Bachelor of Science in Automotive Technology',
+    'Bachelor of Science in Mathematics',
+    'Bachelor of Science in Chemistry',
+    'Bachelor of Science in Biology',
+    'Bachelor of Science in Foods, Nutrition and Dietetics',
+]
+
 def generate_users(number):
     from django.contrib.auth.models import User
     from users.models import UserProfile
@@ -40,6 +64,7 @@ def generate_users(number):
         first_name, last_name = fake.first_name(), fake.last_name()
         new_user = User.objects.create(
                 username=first_name+last_name,
+                password='top_secret'
             )
         new_user.save()
         user_profile = UserProfile.objects.get(user=new_user)
@@ -47,7 +72,7 @@ def generate_users(number):
         user_profile.lastname = last_name
         user_profile.email = first_name.lower()+last_name.lower()+'@example.com'
         user_profile.institution = 'UEA, Baraton'
-        user_profile.major = "BST Electronics"
+        user_profile.major = choice(MAJOR_CHOICES)
         user_profile.phone_number = "+254"+ fake.msisdn()
         user_profile.save()
 
@@ -65,18 +90,18 @@ def generate_posts(number):
         new_post = Post.objects.create(
         user = choice(users)
         ,company_name = fake.company()
-        ,location = "Kenya," + fake.city()
+        ,location = "Kenya, " + fake.city()
         ,industry = choice(INDUSTRY_CHOICES)[0]
         ,products_and_services = 'products_and_services'
         ,website = choice(INDUSTRY_CHOICES)[0]+fake.tld()
         ,contact = choice(INDUSTRY_CHOICES)[0]+'@'+fake.free_email_domain()
-        ,job_title = "Intern in" + fake.job()
+        ,job_title = "Internship for " + fake.job()
         ,job_type = choice(JOB_TYPE_CHOICES)[0]
         ,specialization = choice(INDUSTRY_CHOICES)[0]+" degree"
-        ,job_description = fake.sentence(nb_words=20, variable_nb_words=True)
-        ,education_and_experience = fake.sentence(nb_words=10, variable_nb_words=True)
+        ,job_description = fake.sentence(nb_words=40, variable_nb_words=True)
+        ,education_and_experience = fake.sentence(nb_words=20, variable_nb_words=True)
         ,application_requirements = 'Resume, Cover Letter, ID copy, Recommendation letter'
-        ,application_process = fake.sentence
+        ,application_process = fake.sentence(nb_words=10, variable_nb_words=True)
         ,application_deadline = fake.date_this_decade()
             )
         new_post.save()

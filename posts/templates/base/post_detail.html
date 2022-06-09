@@ -32,30 +32,51 @@
                   ><img src="{{ post.company_pic.url }}" alt=""
                 /></a>
               </div>
-              <div class="job-tittle">
-                <a href="{% url 'post-detail' post.id %}">
-                  <h4>{{ post.job_title }}</h4>
-                </a>
-                <ul>
-                  <li>{{ post.company_name }}</li>
-                  <li><i class="fas fa-map-marker-alt"></i>post.location</li>
-                  <li>{{ post.job_type }}</li>
+              <div class="job-tittle row">
+                <div class="col-sm-11">
+                  <a href="{% url 'post-detail' post.id %}">
+                    <h4>{{ post.job_title }}</h4>
+                  </a>
+                  <ul>
+                    <li>{{ post.company_name }}</li>
+                    <li>
+                      <i class="fas fa-map-marker-alt"></i>{{post.location}}
+                    </li>
+                  </ul>
+                  
+                </div>
+                <div class="col-sm-1">
+                  <div class="list-group">
+                    {%if request.user in bookmarks%}
+                  
+                    <p>
+                      <a class="text-primary" href="{% url 'add-bookmark' post.id %}">
+                        <i class="fa fa-bookmark" aria-hidden="true"></i>
+                      </a>
+                    </p>
+                    {%else%}
+                    <p>
+                      <a class="text-dark" href="{% url 'add-bookmark' post.id %}">
+                        <i class="fa fa-bookmark" aria-hidden="true"></i>
+                      </a>
+                    </p>
+                    {%endif%}
 
-                  {% if request.user == post.user %}
-                  <li>
-                    <a href="{% url 'post-update' post.id %}">
-                      <i class="fas fa-edit"></i>
-                      <span>Edit</span>
-                    </a>
-                  </li>
-                  <li>
-                    <a href="{% url 'post-delete' post.id %}">
-                      <i class="fa fa-trash" aria-hidden="true"></i>
-                      <span>Delete</span>
-                    </a>
-                  </li>
-                  {% endif %}
-                </ul>
+                    {% if request.user == post.user %}
+                    <p>
+                      <a class="text-dark"href="{% url 'post-update' post.id %}">
+                        <i class="fas fa-edit"></i>
+                      </a>
+                    </li>
+                    <p>
+                      <a class="text-dark" href="{% url 'post-delete' post.id %}">
+                        <i class="fa fa-trash" aria-hidden="true"></i>
+                        
+                      </a>
+                    </p>
+                    {% endif %}
+                  </div>
+                </div>
               </div>
             </div>
           </div>
@@ -149,36 +170,3 @@
   <!-- job post company End -->
 </main>
 {% endblock content %}
-
-<h1>
-  Post : {{ post }}
-  <span>
-    {% if request.user == post.user %}
-    <a
-      class="delete-link btn btn-warning"
-      href="{% url 'post-delete' post.id %}"
-      >&#215;</a
-    >
-    <a
-      class="btn btn-primary"
-      href="{% url 'post-update' post.id %}"
-      role="button"
-      >edit</a
-    >
-    {% endif %}
-  </span>
-</h1>
-<a href="{% url 'post-update' post.id %}">
-  edit {{request.user}} {{post.user}}
-</a>
-
-<p>{{post.user}}</p>
-
-<p>More info</p>
-<a
-  class="btn btn-outline-primary"
-  href="{% url 'add-bookmark' post.id %}"
-  role="button"
-  ><i class="fa-solid fa-bookmark"></i
-></a>
-<a class="delete-link" href="{% url 'post-delete' post.id %}">&#215;</a>

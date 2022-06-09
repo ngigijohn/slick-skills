@@ -28,44 +28,37 @@ class PostList(LoginRequiredMixin, ListView):
 
     def get_queryset(self):
         qs = super().get_queryset()
-        print(qs)
         my_filter = PostFilter(self.request.GET, queryset = qs )
-        print(my_filter)
-        return my_filter.qs
+        sorting_order = self.request.GET.get('sort-area') or ''
+        print(sorting_order)
+        print("Sorting. post.views_-------------------_")
+        # if sorting:
+        #     context['posts'] = context['posts'].filter(
+        #         company_name__icontains=sorting)
+        # context['sorting'] = sorting
+        return my_filter.qs.order_by('-created')
 
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
-
         context['posts'] = context['posts']
-        context['count'] = context['posts'].count()
+        
 
         my_filter = PostFilter(self.request.GET, queryset = self.get_queryset())
-        # my_filter = PostFilter(self.request.GET, queryset = context['posts'] )
-        # context['posts'] = my_filter.qs
-        # filter by industry
-        # filter by location
-        # filter by type
-
-        # order by date ascending
-        # order by date descending
-
 
         context['my_filter'] = my_filter
-        
-        search_input = self.request.GET.get('search-area') or ''
-        if search_input:
-            context['posts'] = context['posts'].filter(
-                company_name__icontains=search_input)
-
-        context['search_input'] = search_input
-
+        context['count'] = len(my_filter.qs)
         return context
 
 
 class PostDetail(DetailView):
     model = Post
     template_name = "base/post_detail.html"
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context["bookmarks"] = self.object.bookmarks.all() 
+        return context
+    
 
 
 class PostCreate(LoginRequiredMixin, CreateView):
@@ -81,8 +74,6 @@ class PostCreate(LoginRequiredMixin, CreateView):
 class PostUpdate(LoginRequiredMixin, UpdateView):
     model = Post
     form_class = PostForm
-    # fields = '__all__'
-    # exclude= ['user','bookmarks']
     success_url = reverse_lazy('posts')
     template_name = 'base/post_form.html'
 
@@ -95,7 +86,6 @@ class PostDelete(LoginRequiredMixin, DeleteView):
 
 
 class BookmarkedPostList(LoginRequiredMixin, ListView):
-    
     model = Post
     context_object_name = 'posts'
     template_name = "base/bookmarks_list.html"

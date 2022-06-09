@@ -43,25 +43,13 @@
   </head>
 
   <body>
-    <!-- Preloader Start -->
-    <!-- <div id="preloader-active">
-      <div class="preloader d-flex align-items-center justify-content-center">
-        <div class="preloader-inner position-relative">
-          <div class="preloader-circle"></div>
-          <div class="preloader-img pere-text">
-            <img src="{% static 'images/logo/logo.png' %}" alt="" />
-          </div>
-        </div>
-      </div>
-    </div> -->
-    <!-- Preloader Start -->
     <header>
       <!-- Header Start -->
       <div class="header-area header-transparrent">
         <div class="headder-top header-sticky">
-          <div class="container">
+          <div class="container-fluid">
             <div class="row align-items-center">
-              <div class="col-lg-3 col-md-2">
+              <div class="col-lg-2 col-md-2">
                 <!-- Logo -->
                 <div class="logo">
                   <a href="{% url 'home' %}"
@@ -69,7 +57,7 @@
                   /></a>
                 </div>
               </div>
-              <div class="col-lg-9 col-md-9">
+              <div class="col-lg-10 col-md-10">
                 <div class="menu-wrapper">
                   <!-- Main-menu -->
                   <div class="main-menu">
@@ -89,82 +77,52 @@
                         </li>
                         <li>
                           <a href="{% url 'post-create' %}"
-                            ><span class="btn head-btn1" style="padding: 12px"
-                              >Post a job</span
-                            >
+                            ><span class="small-btn head-btn1">Post a job</span>
                           </a>
                         </li>
                         {% if request.user.is_authenticated %}
                         <li>
-                          <a href="{% url 'user-profile-update' user.id %}"
-                            >{{user.id}}</a
-                          >
-                        </li>
-
-                        {% endif %}
-                      </ul>
-                    </nav>
-                  </div>
-                  <!-- Header-btn -->
-
-                  <div class="header-btn d-none f-right d-lg-block">
-                    {% if request.user.is_authenticated %}
-
-                    <div class="main-menu">
-                      <ul>
-                        <li>
-                          <a href="#"
-                            ><i
-                              class="fa fa-user-circle"
-                              aria-hidden="true"
-                            ></i>
-                            {{ profile.id }}</a
-                          >
+                          <a href="#">{{user.username}}</a>
                           <ul class="submenu">
                             <li>
-                              <img
-                                src="{{ profile.profile_pic.url }}"
-                                alt=""
-                                srcset=""
-                              />
+                              <span class="p-2">
+                                <a
+                                  href="{%url 'user-profile' user.userprofile.id %}"
+                                >
+                                  <i
+                                    class="fa fa-user-circle"
+                                    aria-hidden="true"
+                                  ></i
+                                  >Profile</a
+                                >
+                              </span>
                             </li>
+
                             <li>
-                              {% if profile.id %}
-                              <a
-                                href="{% url 'user-profile' profile.id %}"
-                                style="color: black"
-                                >{{ request.user|title }}</a
-                              >
-                            </li>
-                            <li>
-                              <a href="{% url 'user-profile-update' user.id %}"
-                                >Edit</a
-                              >
-                            </li>
-                            {% endif %}
-                            <li class="small-btn head-btn2">
-                              <a
-                                class="small-btn head-btn2"
-                                href="{% url 'logout' %}"
-                                >Log out</a
-                              >
+                              <a href="{% url 'logout' %}">
+                                <span class="small-btn head-btn2">
+                                  Log out
+                                </span>
+                              </a>
                             </li>
                           </ul>
                         </li>
+                        {% else %}
+                        <li>
+                          <a href="{% url 'register' %}"
+                            ><span class="small-btn head-btn1"
+                              >Register</span
+                            ></a
+                          >
+                        </li>
+                        <li>
+                          <a href="{% url 'login' %}">
+                            <span class="small-btn head-btn2"> Log in </span>
+                          </a>
+                        </li>
+                        {% endif %}
                       </ul>
-                    </div>
-
-                    {% else %}
-                    <span class="flex">
-                      <a class="small-btn head-btn1" href="{% url 'register' %}"
-                        >Register</a
-                      >
-                      <a class="small-btn head-btn2" href="{% url 'login' %}"
-                        >Log in</a
-                      >
-                    </span>
-
-                    {% endif %}
+                    </nav>
                   </div>
                 </div>
               </div>
@@ -331,7 +289,9 @@
                   <a href="#"><i class="fab fa-facebook-f"></i></a>
                   <a href="#"><i class="fab fa-twitter"></i></a>
                   <a href="#"><i class="fas fa-globe"></i></a>
-                  <a href="{% url 'send-mail'%}"><i class="fab fa-behance"></i></a>
+                  <a href="{% url 'send-mail'%}"
+                    ><i class="fab fa-behance"></i
+                  ></a>
                 </div>
               </div>
             </div>
