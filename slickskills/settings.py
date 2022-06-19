@@ -77,22 +77,19 @@ WSGI_APPLICATION = 'slickskills.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/3.2/ref/settings/#databases
 
+
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        'NAME': 'd9gndr5mqbpa7j',
-        'HOST': 'ec2-54-211-255-161.compute-1.amazonaws.com',
-        'PORT': '5432',
-        'USER': 'oioyfquzmxvcrb',
-        'PASSWORD': 'de794b6e597753703e6d4eb2fa8893dc226eec1025bb8b064be79dc1659946e2',
+        'ENGINE': 'django.db.backends.sqlite3',
+        'NAME': BASE_DIR / 'db.sqlite3',
     }
 }
-# DATABASES = {
-#     'default': {
-#         'ENGINE': 'django.db.backends.sqlite3',
-#         'NAME': BASE_DIR / 'db.sqlite3',
-#     }
-# }
+
+import dj_database_url
+postgres_database = dj_database_url.config(conn_max_age=600)
+DATABASES['default'].update(postgres_database)
+
+
 
 # Password validation
 # https://docs.djangoproject.com/en/3.2/ref/settings/#auth-password-validators
