@@ -16,6 +16,7 @@ from .models import UserProfile
 from .forms import UserProfileForm
 from django.core.mail import send_mail
 from django.conf import settings
+from posts.models import Post
 
 # Create your views here.
 
@@ -24,8 +25,8 @@ def email(request):
     subject = 'Thank you for registering to our site'
     message = ' it  means a world to us '
     email_from = settings.EMAIL_HOST_USER
-    recipient_list = ['joncarsel@gmail.com',]
-    send_mail( subject, message, email_from, recipient_list )
+    recipient_list = ['joncarsel@gmail.com', ]
+    send_mail(subject, message, email_from, recipient_list)
     # return redirect('base/verify-email.html')
     return HttpResponse('Email sent')
 
@@ -84,10 +85,16 @@ class UserProfile(DetailView):
     context_object_name = 'profile'
     template_name = "base/user_detail.html"
 
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['posts'] = Post.objects.all().filter(
+            bookmarks=self.request.user)
+        return context
+
 
 class UserProfileCreate(LoginRequiredMixin, CreateView):
     form_class = UserProfileForm
-    success_url = reverse_lazy('user-profile' )
+    success_url = reverse_lazy('user-profile')
     template_name = "base/user_form.html"
 
     def form_valid(self, form):
