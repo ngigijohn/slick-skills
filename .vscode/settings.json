@@ -1,3 +1,4 @@
 {
-  "materialkv.pythonFile": "main.py"
+  "materialkv.pythonFile": "main.py",
+  "prettier.printWidth": 300
 }

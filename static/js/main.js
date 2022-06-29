@@ -213,16 +213,8 @@
 /* 10. WOW active */
     new WOW().init();
 
-/* 11. Datepicker */
-    
-// 11. ---- Mailchimp js --------//  
-    function mailChimp() {
-      $('#mc_embed_signup').find('form').ajaxChimp();
-    }
-    mailChimp();
 
-
-// 12 Pop Up Img
+// 11. Pop Up Img
     var popUp = $('.single_gallery_part, .img-pop-up');
       if(popUp.length){
         popUp.magnificPopup({

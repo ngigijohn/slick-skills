@@ -49,7 +49,11 @@ class RegisterPage(FormView):
     template_name = 'base/register.html'
     form_class = UserCreationForm
     redirect_authenticated_user = True
-    success_url = reverse_lazy('posts')
+
+    def get_success_url(self) -> str:
+        self.success_url = reverse_lazy(
+            'user-profile-update', kwargs={'pk': self.request.user.userprofile.id})
+        return super().get_success_url()
 
     def form_valid(self, form):
         user = form.save()
@@ -104,5 +108,10 @@ class UserProfileCreate(LoginRequiredMixin, CreateView):
 
 class UserProfileUpdate(LoginRequiredMixin, UpdateView):
     form_class = UserProfileForm
-    success_url = reverse_lazy('user-profile',)
+
     template_name = 'base/user_form.html'
+
+    # go to userprofile page after update
+
+    def get_success_url(self):
+        return reverse_lazy('user-profile', kwargs={'pk': self.request.user.userprofile.id})
