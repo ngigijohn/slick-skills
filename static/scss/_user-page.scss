@@ -1,0 +1,5 @@
+.wrapper.user-detail{
+    @media #{$--md}{
+        max-width:900px
+    }
+}

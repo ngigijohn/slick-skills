@@ -1,18 +1,14 @@
 {% extends 'base/index.html' %}{% block content %}
 
 <main>
-  <div class="wrapper post-form">
+  <div class="wrapper user-detail">
     <div class="header-bar">
       <a href="{% url 'users'%}">&#8592; back</a>
     </div>
     <div class="card mb-3">
       <div class="row no-gutters">
         <div class="col-md-4">
-          <img
-            class="card-img-top"
-            src="{{ profile.profile_pic.url }}"
-            alt=""
-          />
+          <img class="card-img-top" src="{{ profile.profile_pic.url }}" alt="" />
         </div>
         <div class="col-md-7">
           <div class="card-body">
@@ -28,19 +24,11 @@
               </span>
               {% endif %}
             </h4>
-            <i
-              ><i class="fa fa-envelope" aria-hidden="true"></i>
-              {{profile.email}}</i
-            >
-            <p class="card-text">
-              <i class="fa fa-book" aria-hidden="true"></i> {{profile.major}}
-            </p>
+            <i><i class="fa fa-envelope" aria-hidden="true"></i> {{profile.email}}</i>
+            <p class="card-text"><i class="fa fa-book" aria-hidden="true"></i> {{profile.major}}</p>
             {%if request.user == profile.user %}
             <p class="card-text">
-              <small class="text-muted"
-                ><i class="fa fa-phone" aria-hidden="true"></i> Phone Number:
-                {{profile.phone_number}}</small
-              >
+              <small class="text-muted"><i class="fa fa-phone" aria-hidden="true"></i> Phone Number: {{profile.phone_number}}</small>
             </p>
             <a href="{%url 'bookmarks'%}">
               <h4 class="card-title">Bookmarked: {{posts.count}}</h4>

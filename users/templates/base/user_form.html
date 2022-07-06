@@ -1,17 +1,14 @@
-{% extends 'base/index.html' %}
-{% block content %}
-<div class="wrapper post-form">
-    
-    <div class="header-bar">
-        <a href="{% url 'posts' %}">&#8592; back</a>
-    </div>
-    <div class="card-body">
-        <form method="POST" action="" enctype="multipart/form-data">
-            {% csrf_token %}
-            {{form.as_p}}
-            <input class="btn" type="submit" value="Submit">
-        </form>
-    </div>
+{% extends 'base/index.html' %} {% block content %}
+<div class="wrapper user-form">
+  <div class="header-bar">
+    <a href="{% url 'posts' %}">&#8592; back</a>
+  </div>
+  <div class="card-body">
+    <form method="POST" action="" enctype="multipart/form-data">
+      {% csrf_token %} {{form.as_p}}
+      <input class="btn" type="submit" value="Submit" />
+    </form>
+  </div>
 </div>
-    
+
 {%endblock content%}

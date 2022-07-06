@@ -20,6 +20,14 @@ $md:'only screen and (min-width: 768px) and (max-width: 991px)';
 $xs:'(max-width: 767px)';
 $sm: 'only screen and (min-width: 576px) and (max-width: 767px)';
 
+$--xl: 'only screen and (min-width: 1200px)';
+$--lg :'only screen and (min-width: 992px) ';
+$--md:'only screen and (min-width: 768px) ';
+$--sm: 'only screen and (min-width: 576px)';
+$--xs:'(max-width: 576px)';
+
+
+
 // Extra Responsive
 
 $medium_device : 'only screen and (min-width: 992px) and (max-width: 1200px)';
