@@ -3810,6 +3810,10 @@ del {
 .header-area .main-menu ul ul.submenu .btn {
   background-color: #fff;
 }
+.header-area .logo img {
+  width: 100px;
+}
+
 .header-area ul > li:hover > ul.submenu {
   visibility: visible;
   opacity: 1;
