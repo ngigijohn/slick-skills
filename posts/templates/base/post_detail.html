@@ -29,7 +29,7 @@
             <div class="job-items">
               <div class="company-img company-img-details">
                 <a href="{% url 'post-detail' post.id %}"
-                  ><img src="{{ post.company_pic.url }}" alt=""
+                  ><img src="{% static '/images/company_pic.png'%}" alt=""
                 /></a>
               </div>
               <div class="job-tittle row">
