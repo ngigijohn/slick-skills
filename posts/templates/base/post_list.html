@@ -89,7 +89,7 @@
                   <div class="company-img">
                     <a href="{% url 'post-detail' post.id %}"
                       ><img
-                        src="{{ post.company_pic.url }}"
+                        src="{% static '/images/company_pic.png' %}"
                         alt="post.company_name"
                     /></a>
                   </div>

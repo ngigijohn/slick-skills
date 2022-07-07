@@ -49,7 +49,7 @@
               <div class="single-job-items mb-30">
                 <div class="job-items">
                   <div class="company-img">
-                    <a href="{% url 'post-detail' post.id %}"><img src="{{ post.company_pic.url }}" alt="post.company_name" /></a>
+                    <a href="{% url 'post-detail' post.id %}"><img src="{% static '/images/company_pic.png' %}" alt="post.company_name" /></a>
                   </div>
                   <div class="job-tittle job-tittle2">
                     <a href="{% url 'post-detail' post.id %}">
