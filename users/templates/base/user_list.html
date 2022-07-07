@@ -11,19 +11,12 @@
       {% for profile in users %}
       <div class="profile row p-4">
         <div class="col-sm-2">
-          <img
-            width="150px"
-            aspect-ratio="1/1"
-            src="{{ profile.profile_pic.url }}"
-            alt=""
-          />
+          <img width="150px" aspect-ratio="1/1" src="{% static '/images/default.jpg'%}}" alt="" />
         </div>
         <div class="col-sm-8">
           <div>
             <h4 class="card-title">
-              <a href="{% url 'user-profile' profile.id %}">
-                {{ profile.firstname}} {{profile.lastname}}</a
-              >
+              <a href="{% url 'user-profile' profile.id %}"> {{ profile.firstname}} {{profile.lastname}}</a>
               <small> <i> {{ profile.institution }}</i></small>
             </h4>
           </div>
