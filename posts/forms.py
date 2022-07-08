@@ -26,9 +26,7 @@ INDUSTRY_CHOICES = [
 ]
 JOB_TYPE_CHOICES = [
     ('Internship', 'Internship'),
-    ('Part-time', 'Part-time'),
-    ('Fulltime', 'Fulltime'),
-    ('Contract', 'Contract'),
+    ('Paid Internship', 'Paid Internship'),
 ]
 
 
